@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050608">
 <title>IMPULSE — Мир физики</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -42,39 +43,131 @@ footer{background:#08090b;color:#aaa;padding:25px 5.5%;display:flex;justify-cont
 .nosol{margin-top:14px;font-size:11px;line-height:1.6;color:#8a8a93;border:1px dashed var(--line);border-radius:12px;padding:11px 14px}#homeContent.hidden{display:none}
 @media(max-width:800px){.hero{height:100svh;min-height:620px}.lesson-layout{grid-template-columns:1fr}.side-note{position:static;order:-1}.learning{padding:35px 5% 60px}}
 
+/* ===== v3: icons, atom, where-used figure, mobile lock ===== */
+html,body{max-width:100%;overflow-x:hidden;overscroll-behavior-x:none;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@supports(overflow:clip){html,body{overflow-x:clip}}
+html{-webkit-tap-highlight-color:transparent}button,a,.topic button,.card{touch-action:manipulation}
+.i{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;display:inline-block;vertical-align:middle;overflow:visible}
+.brand-mark{display:grid;place-items:center}.brand-mark .i{stroke-width:1.5;filter:drop-shadow(0 0 6px rgba(255,255,255,.45))}
+.search{display:grid;place-items:center;transition:.25s}.search:hover{color:#fff}
+.btn-ic{display:inline-grid;place-items:center;font-size:15px;animation:nudge 2.2s ease-in-out infinite}@keyframes nudge{50%{transform:translateY(3px)}}
+.date{gap:9px}.date .i{font-size:15px}
+.topic .ico{display:grid;place-items:center;font-size:30px;line-height:1;font-weight:400}.topic .ico .i{stroke-width:1.55;transition:transform .5s cubic-bezier(.3,1.3,.5,1)}
+.topic button:hover .ico .i{transform:scale(1.12) rotate(-6deg)}.topic:first-child button:hover .ico .i{transform:rotate(60deg)}
+.dark-btn{display:inline-flex;align-items:center;gap:10px}.dark-btn .i{font-size:15px}
+.all{display:inline-flex;align-items:center;gap:8px}.all .i{font-size:14px}
+.arrow .i{font-size:16px;stroke-width:1.8}
+.back-btn{display:inline-flex;align-items:center;gap:8px}.back-btn .i{font-size:14px}
+#noteArrow{display:grid;place-items:center;transition:transform .3s}#noteArrow .i{font-size:14px}.side-note.open #noteArrow{transform:rotate(45deg)}
+.foot-brand{display:inline-flex;align-items:center;gap:10px}.foot-brand .i{font-size:16px}
+/* atom */
+.atom{width:min(400px,100%);height:auto;filter:none}.atom-wrap{height:auto;min-height:280px;padding:6px 0}.atom-svg{display:block;width:100%;height:auto;overflow:visible}
+/* where-used figure */
+.where{margin:12px 0 0;border-radius:16px;overflow:hidden;background:#14151b;color:#fff;box-shadow:0 14px 28px rgba(22,20,30,.22)}
+.where-art svg{display:block;width:100%;height:auto}
+.where figcaption{padding:14px 16px 16px;border-top:1px solid rgba(255,255,255,.08)}.where small{display:block;font-size:10px;color:#9a9aa3;margin-bottom:9px;letter-spacing:.04em}
+.where ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}.where li{font-size:12px;line-height:1.4;padding-left:16px;position:relative;color:#ececf1}
+.where li:before{content:"";position:absolute;left:0;top:.5em;width:6px;height:6px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,#777)}
+.lesson-layout>*{min-width:0}.formula{overflow-x:auto;overflow-y:hidden}.s-row{grid-template-columns:74px minmax(0,1fr)}
+@supports(height:100svh){.hero{height:100svh}}
+@media(max-width:800px){
+ .nav{padding-top:max(22px,env(safe-area-inset-top))}
+ .topic span:last-child{font-size:10px}.atom-wrap{min-height:0}
+ .learning-top{flex-direction:column-reverse;align-items:flex-start;gap:14px}
+ .where{display:flex;align-items:stretch}.where-art{width:38%;flex:none}.where figcaption{border-top:0;border-left:1px solid rgba(255,255,255,.08);align-self:center;padding:12px 14px}.where li{font-size:11.5px}
+ .formula-card{padding:16px}.s-row{grid-template-columns:62px minmax(0,1fr)}.solution{padding:15px 15px}
+ .lesson-tools{gap:7px}.tool-tab{padding:9px 12px}
+}
+@media(max-width:560px){
+ .topics{grid-template-columns:repeat(6,1fr);gap:8px 0;padding-top:20px}
+ .topic:nth-child(-n+3){grid-column:span 2}.topic:nth-child(n+4){grid-column:span 3}
+ .topic{border:0;min-height:0;padding:0 4px}.topic button{width:100%;height:78px;border-radius:17px;gap:7px}
+ .topic .ico{font-size:27px}.topic span:last-child{font-size:11px}
+ .hero h1{font-size:clamp(40px,12.5vw,60px);letter-spacing:.16em;padding-left:.16em}
+ .intro{padding:34px 6% 26px}.intro h2{font-size:30px}.intro p{max-width:none}
+ .hero-foot{left:6%;right:6%}
+ .where-art{width:42%}
+}
+@media(prefers-reduced-motion:reduce){.btn-ic{animation:none}}
 </style>
 <script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},options:{enableMenu:false}};</script>
 <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js" onerror="window.noMath=1;try{renderLesson()}catch(e){}"></script>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-gear" viewBox="0 0 24 24"><path d="M10.20 4.51L10.64 1.89L13.36 1.89L13.80 4.51A7.7 7.7 0 0 1 16.02 5.43L18.19 3.89L20.11 5.81L18.57 7.98A7.7 7.7 0 0 1 19.49 10.20L22.11 10.64L22.11 13.36L19.49 13.80A7.7 7.7 0 0 1 18.57 16.02L20.11 18.19L18.19 20.11L16.02 18.57A7.7 7.7 0 0 1 13.80 19.49L13.36 22.11L10.64 22.11L10.20 19.49A7.7 7.7 0 0 1 7.98 18.57L5.81 20.11L3.89 18.19L5.43 16.02A7.7 7.7 0 0 1 4.51 13.80L1.89 13.36L1.89 10.64L4.51 10.20A7.7 7.7 0 0 1 5.43 7.98L3.89 5.81L5.81 3.89L7.98 5.43A7.7 7.7 0 0 1 10.20 4.51Z"/><circle cx="12" cy="12" r="3.1"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13.2 2.5 5 13.6h6.1l-1 7.9 8.3-11.3h-6.2z"/></symbol>
+<symbol id="i-therm" viewBox="0 0 24 24"><path d="M13.6 14.6V4.6a2.6 2.6 0 0 0-5.2 0v10a4.6 4.6 0 1 0 5.2 0z"/><path d="M11 9v7.4"/><circle cx="11" cy="17.4" r="1.5" fill="currentColor" stroke="none"/><path d="M16.6 5h2.4M16.6 8h2.4M16.6 11h2.4"/></symbol>
+<symbol id="i-prism" viewBox="0 0 24 24"><path d="M11 3.6 18.2 18.4H3.8z"/><path d="M1.6 13.4 7 11.4"/><path d="M7 11.4l8.2 1.2"/><path d="M15.2 12.6 22.4 9M15.2 12.6l7.2 3.6M15.2 12.6l6.4 7"/></symbol>
+<symbol id="i-atom" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10.2" ry="4" /><ellipse cx="12" cy="12" rx="10.2" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10.2" ry="4" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-logo" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.3"/><path d="M4.6 12.4h3.4l2-5.2 3.6 9.6 2.2-4.4h3.6"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m20.6 20.6-4.9-4.9"/></symbol>
+<symbol id="i-right" viewBox="0 0 24 24"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></symbol>
+<symbol id="i-left" viewBox="0 0 24 24"><path d="M19.5 12h-15M10.5 6l-6 6 6 6"/></symbol>
+<symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4.5v15M6 13.5l6 6 6-6"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3.2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+</defs></svg>
 <header class="hero" id="home">
- <nav class="nav"><a class="brand" href="#home"><span class="brand-mark">✳</span><span>IMPULSE</span></a><div class="navlinks"><a class="active" href="#home">Главная</a><a href="#topics">Разделы</a><a href="#formulas">Обучение</a><a href="#about">О проекте</a></div><a class="search" href="#formulas" aria-label="Поиск">⌕</a></nav>
- <div class="hero-content"><div class="eyebrow">ОБРАЗОВАТЕЛЬНАЯ ПЛАТФОРМА</div><h1>IMPULSE</h1><div class="tagline">Изучай. Понимай. Решай.</div><a class="glow-btn" href="#topics">Начать обучение <span>↓</span></a></div>
- <div class="hero-foot"><div class="quote-mini"><b>“</b>Физика — это не просто наука,<br>а ключ к пониманию Вселенной.</div><div class="date">12.11.2026　◌</div></div>
+ <nav class="nav"><a class="brand" href="#home"><span class="brand-mark"><svg class="i " aria-hidden="true"><use href="#i-logo"/></svg></span><span>IMPULSE</span></a><div class="navlinks"><a class="active" href="#home">Главная</a><a href="#topics">Разделы</a><a href="#formulas">Обучение</a><a href="#about">О проекте</a></div><a class="search" href="#formulas" aria-label="Поиск"><svg class="i " aria-hidden="true"><use href="#i-search"/></svg></a></nav>
+ <div class="hero-content"><div class="eyebrow">ОБРАЗОВАТЕЛЬНАЯ ПЛАТФОРМА</div><h1>IMPULSE</h1><div class="tagline">Изучай. Понимай. Решай.</div><a class="glow-btn" href="#topics">Начать обучение <span class="btn-ic"><svg class="i " aria-hidden="true"><use href="#i-down"/></svg></span></a></div>
+ <div class="hero-foot"><div class="quote-mini"><b>“</b>Физика — это не просто наука,<br>а ключ к пониманию Вселенной.</div><div class="date"><span>12.11.2026</span><svg class="i " aria-hidden="true"><use href="#i-cal"/></svg></div></div>
 </header>
 <main>
 <div id="homeContent">
 <section class="topics" id="topics">
-<div class="topic"><button onclick="openTopic('mechanics')"><span class="ico">↗</span><span>Механика</span></button></div>
-<div class="topic"><button onclick="openTopic('electricity')"><span class="ico">ϟ</span><span>Электричество</span></button></div>
-<div class="topic"><button onclick="openTopic('thermo')"><span class="ico">♨</span><span>Термодинамика</span></button></div>
-<div class="topic"><button onclick="openTopic('optics')"><span class="ico">☼</span><span>Оптика</span></button></div>
-<div class="topic"><button onclick="openTopic('quantum')"><span class="ico">◉</span><span>Квантовая физика</span></button></div>
+<div class="topic"><button onclick="openTopic('mechanics')"><span class="ico"><svg class="i " aria-hidden="true"><use href="#i-gear"/></svg></span><span>Механика</span></button></div>
+<div class="topic"><button onclick="openTopic('electricity')"><span class="ico"><svg class="i " aria-hidden="true"><use href="#i-bolt"/></svg></span><span>Электричество</span></button></div>
+<div class="topic"><button onclick="openTopic('thermo')"><span class="ico"><svg class="i " aria-hidden="true"><use href="#i-therm"/></svg></span><span>Термодинамика</span></button></div>
+<div class="topic"><button onclick="openTopic('optics')"><span class="ico"><svg class="i " aria-hidden="true"><use href="#i-prism"/></svg></span><span>Оптика</span></button></div>
+<div class="topic"><button onclick="openTopic('quantum')"><span class="ico"><svg class="i " aria-hidden="true"><use href="#i-atom"/></svg></span><span>Квантовая физика</span></button></div>
 </section>
-<section class="intro" id="about"><div><h2>Твой проводник<br>в мир физики</h2><p>Изучай физику по разделам: разбирай обозначения, понимай смысл формул и смотри пошаговые примеры решений.</p><button class="dark-btn" onclick="document.getElementById('topics').scrollIntoView({behavior:'smooth'})">Выбрать раздел　→</button></div><div class="atom-wrap"><div class="atom"><i class="orbit"></i><i class="orbit two"></i><i class="orbit three"></i><i class="nucleus"></i><i class="electron e1"></i><i class="electron e2"></i><i class="electron e3"></i></div></div></section>
+<section class="intro" id="about"><div><h2>Твой проводник<br>в мир физики</h2><p>Изучай физику по разделам: разбирай обозначения, понимай смысл формул и смотри пошаговые примеры решений.</p><button class="dark-btn" onclick="document.getElementById('topics').scrollIntoView({behavior:'smooth'})">Выбрать раздел <svg class="i " aria-hidden="true"><use href="#i-right"/></svg></button></div><div class="atom-wrap"><div class="atom"><svg class="atom-svg" viewBox="0 0 400 320" role="img" aria-label="Модель атома">
+<defs>
+<radialGradient id="disc" cx=".35" cy=".3" r=".95"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#e2e1e8"/></radialGradient>
+<linearGradient id="orb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#15151a"/><stop offset=".5" stop-color="#7d7d87"/><stop offset="1" stop-color="#15151a"/></linearGradient>
+<radialGradient id="eg" cx=".32" cy=".28" r=".85"><stop offset="0" stop-color="#fff"/><stop offset=".3" stop-color="#a3a3ac"/><stop offset="1" stop-color="#0d0d10"/></radialGradient>
+<radialGradient id="pg" cx=".32" cy=".28" r=".85"><stop offset="0" stop-color="#fff"/><stop offset=".3" stop-color="#6d6d76"/><stop offset="1" stop-color="#09090b"/></radialGradient>
+<radialGradient id="ng" cx=".32" cy=".28" r=".85"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#d4d4db"/><stop offset="1" stop-color="#8b8b95"/></radialGradient>
+<radialGradient id="halo"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+<filter id="neu" x="-30%" y="-30%" width="170%" height="170%">
+<feGaussianBlur in="SourceAlpha" stdDeviation="10" result="b"/>
+<feOffset in="b" dx="10" dy="12" result="o1"/><feFlood flood-color="#181622" flood-opacity=".17"/><feComposite in2="o1" operator="in" result="s1"/>
+<feOffset in="b" dx="-9" dy="-9" result="o2"/><feFlood flood-color="#fff" flood-opacity=".95"/><feComposite in2="o2" operator="in" result="s2"/>
+<feMerge><feMergeNode in="s1"/><feMergeNode in="s2"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter>
+</defs>
+<circle cx="200" cy="160" r="132" fill="url(#disc)" stroke="#fff" stroke-width="1.5" filter="url(#neu)"/>
+<circle cx="200" cy="160" r="150" fill="none" stroke="#b9b8c2" stroke-width="1" stroke-dasharray="1.5 7" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" from="0 200 160" to="360 200 160" dur="90s" repeatCount="indefinite"/></circle>
+<circle cx="200" cy="160" r="104" fill="none" stroke="#d1d0d8" stroke-width="1"/>
+<path d="M92 160 q27 -34 54 0 t54 0 t54 0 t54 0" fill="none" stroke="#a9a8b3" stroke-width="1.2" opacity=".55" stroke-dasharray="3 5"><animate attributeName="stroke-dashoffset" from="0" to="-32" dur="3s" repeatCount="indefinite"/></path>
+<g transform="rotate(0 200 160)"><ellipse cx="200" cy="160" rx="118" ry="40" fill="none" stroke="url(#orb)" stroke-width="1.8"/>
+<circle r="5" fill="#1b1b20" opacity=".22"><animateMotion dur="6s" begin="-0.35s" repeatCount="indefinite" path="M82,160 a118,40 0 1,0 236,0 a118,40 0 1,0 -236,0"/></circle>
+<circle r="7.5" fill="url(#eg)"><animateMotion dur="6s" begin="0s" repeatCount="indefinite" path="M82,160 a118,40 0 1,0 236,0 a118,40 0 1,0 -236,0"/></circle></g><g transform="rotate(60 200 160)"><ellipse cx="200" cy="160" rx="118" ry="40" fill="none" stroke="url(#orb)" stroke-width="1.8"/>
+<circle r="5" fill="#1b1b20" opacity=".22"><animateMotion dur="8s" begin="-2.35s" repeatCount="indefinite" path="M82,160 a118,40 0 1,1 236,0 a118,40 0 1,1 -236,0"/></circle>
+<circle r="7.5" fill="url(#eg)"><animateMotion dur="8s" begin="-2s" repeatCount="indefinite" path="M82,160 a118,40 0 1,1 236,0 a118,40 0 1,1 -236,0"/></circle></g><g transform="rotate(-60 200 160)"><ellipse cx="200" cy="160" rx="118" ry="40" fill="none" stroke="url(#orb)" stroke-width="1.8"/>
+<circle r="5" fill="#1b1b20" opacity=".22"><animateMotion dur="10s" begin="-5.35s" repeatCount="indefinite" path="M82,160 a118,40 0 1,0 236,0 a118,40 0 1,0 -236,0"/></circle>
+<circle r="7.5" fill="url(#eg)"><animateMotion dur="10s" begin="-5s" repeatCount="indefinite" path="M82,160 a118,40 0 1,0 236,0 a118,40 0 1,0 -236,0"/></circle></g>
+<circle cx="200" cy="160" r="30" fill="url(#halo)"><animate attributeName="r" values="26;36;26" dur="3.4s" repeatCount="indefinite"/></circle>
+<g><circle cx="194.8" cy="151.4" r="9.5" fill="url(#pg)"/><circle cx="205.2" cy="151.4" r="9.5" fill="url(#ng)"/><circle cx="210.5" cy="160.0" r="9.5" fill="url(#pg)"/><circle cx="200" cy="160" r="9.5" fill="url(#ng)"/><circle cx="189.5" cy="160.0" r="9.5" fill="url(#ng)"/><circle cx="205.2" cy="168.6" r="9.5" fill="url(#ng)"/><circle cx="194.8" cy="168.6" r="9.5" fill="url(#pg)"/><animateTransform attributeName="transform" type="rotate" from="0 200 160" to="360 200 160" dur="24s" repeatCount="indefinite"/></g>
+<g font-family="Manrope,Arial,sans-serif" font-size="12" fill="#8d8c97" font-style="italic">
+<text x="22" y="48">E = hν</text><text x="318" y="46" font-size="15">ħω</text>
+<text x="352" y="276" font-size="17">ψ</text><text x="16" y="276" font-size="11">ΔxΔp ≥ ħ/2</text></g>
+<g fill="#9b9aa5"><circle cx="64" cy="132" r="1.6"/><circle cx="342" cy="188" r="1.6"/><circle cx="300" cy="24" r="1.2"/><circle cx="96" cy="300" r="1.2"/></g>
+</svg></div></div></section>
 <div class="banner"><div class="quote-banner"><div class="quote-text">Понимать физику — значит видеть закономерности в окружающем мире.<small>— IMPULSE</small></div></div></div>
-<section class="sections" id="formulas"><div class="section-head"><div><small>ОБУЧЕНИЕ</small><h2>Выбери, что изучать</h2></div><span class="all">5 разделов　→</span></div>
+<section class="sections" id="formulas"><div class="section-head"><div><small>ОБУЧЕНИЕ</small><h2>Выбери, что изучать</h2></div><span class="all">5 разделов <svg class="i " aria-hidden="true"><use href="#i-right"/></svg></span></div>
 <div class="cards">
-<a class="card" href="#topics" onclick="openTopic('mechanics');return false"><div class="card-content"><h3>Механика</h3><p>Движение, силы и энергия</p><span class="arrow">→</span></div></a>
-<a class="card" href="#topics" onclick="openTopic('electricity');return false"><div class="card-content"><h3>Электричество</h3><p>Ток, напряжение и сопротивление</p><span class="arrow">→</span></div></a>
-<a class="card" href="#topics" onclick="openTopic('optics');return false"><div class="card-content"><h3>Оптика</h3><p>Свет и линзы</p><span class="arrow">→</span></div></a>
-<a class="card" href="#topics" onclick="openTopic('quantum');return false"><div class="card-content"><h3>Квантовая физика</h3><p>Фотоны и энергия</p><span class="arrow">→</span></div></a>
+<a class="card" href="#topics" onclick="openTopic('mechanics');return false"><div class="card-content"><h3>Механика</h3><p>Движение, силы и энергия</p><span class="arrow"><svg class="i " aria-hidden="true"><use href="#i-right"/></svg></span></div></a>
+<a class="card" href="#topics" onclick="openTopic('electricity');return false"><div class="card-content"><h3>Электричество</h3><p>Ток, напряжение и сопротивление</p><span class="arrow"><svg class="i " aria-hidden="true"><use href="#i-right"/></svg></span></div></a>
+<a class="card" href="#topics" onclick="openTopic('optics');return false"><div class="card-content"><h3>Оптика</h3><p>Свет и линзы</p><span class="arrow"><svg class="i " aria-hidden="true"><use href="#i-right"/></svg></span></div></a>
+<a class="card" href="#topics" onclick="openTopic('quantum');return false"><div class="card-content"><h3>Квантовая физика</h3><p>Фотоны и энергия</p><span class="arrow"><svg class="i " aria-hidden="true"><use href="#i-right"/></svg></span></div></a>
 </div></section></div>
 <section class="learning" id="learningPage">
-<div class="learning-top"><div><div class="learning-kicker">БИБЛИОТЕКА ФИЗИКИ / ОБУЧЕНИЕ</div><h2 id="lessonTitle"></h2><p class="learning-lead" id="lessonLead"></p></div><button class="back-btn" onclick="showHome()">← Все разделы</button></div>
+<div class="learning-top"><div><div class="learning-kicker">БИБЛИОТЕКА ФИЗИКИ / ОБУЧЕНИЕ</div><h2 id="lessonTitle"></h2><p class="learning-lead" id="lessonLead"></p></div><button class="back-btn" onclick="showHome()"><svg class="i " aria-hidden="true"><use href="#i-left"/></svg> Все разделы</button></div>
 <div class="lesson-tools" id="topicTabs"></div>
-<div class="lesson-layout"><div id="lessonContent" class="formula-list"></div><aside class="side-note" id="sideNote"><button class="note-toggle" onclick="toggleNote()"><strong>Что это и зачем?</strong><span id="noteArrow">＋</span></button><div class="note-content" id="noteContent"></div></aside></div>
-</section></main><footer><span>✳　IMPULSE</span><span>Изучай. Понимай. Решай.</span><span>© 2026</span></footer>
+<div class="lesson-layout"><div id="lessonContent" class="formula-list"></div><aside class="side-note" id="sideNote"><button class="note-toggle" onclick="toggleNote()"><strong>Что это и зачем?</strong><span id="noteArrow"><svg class="i " aria-hidden="true"><use href="#i-plus"/></svg></span></button><div class="note-content" id="noteContent"></div><figure class="where" id="whereBox"></figure></aside></div>
+</section></main><footer><span class="foot-brand"><svg class="i " aria-hidden="true"><use href="#i-logo"/></svg>IMPULSE</span><span>Изучай. Понимай. Решай.</span><span>© 2026</span></footer>
 <script>
 const lessons={
 mechanics:{title:'Механика',lead:'Изучает движение тел, причины движения и взаимодействие между телами.',note:'Механика помогает описывать, как движутся тела и почему меняется их движение. Сначала выпиши известные величины, затем выбери формулу, связывающую их с искомой.',items:[
@@ -124,6 +217,47 @@ quantum:{title:'Квантовая физика',lead:'Изучает микро
 ]}
 };
 let currentLesson='mechanics';
+const STARS='<g fill="#fff"><circle cx="30" cy="34" r="1" opacity=".7"/><circle cx="214" cy="26" r="1.2" opacity=".8"/><circle cx="238" cy="92" r=".9" opacity=".5"/><circle cx="18" cy="120" r=".9" opacity=".5"/><circle cx="68" cy="60" r=".8" opacity=".5"/><circle cx="176" cy="48" r=".8" opacity=".6"/><circle cx="240" cy="180" r="1" opacity=".5"/><circle cx="22" cy="200" r="1" opacity=".45"/></g>';
+const art=s=>`<svg viewBox="0 0 260 300" aria-hidden="true"><defs><linearGradient id="abg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#090a0e"/><stop offset="1" stop-color="#22232d"/></linearGradient><radialGradient id="agl" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff" stop-opacity=".26"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient><filter id="ag" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><rect width="260" height="300" fill="url(#abg)"/>${STARS}<circle cx="130" cy="140" r="120" fill="url(#agl)"/><g fill="none" stroke="#f2f1f5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#ag)">${s}</g></svg>`;
+const ART={
+mechanics:art(`<path d="M-10 300Q130 236 270 300" fill="#12131a"/><path d="M-10 262Q130 200 270 262" stroke-opacity=".35"/>
+<path d="M52 262C64 224 92 196 118 174" stroke-dasharray="2 7" stroke-opacity=".8"/>
+<g transform="rotate(24 130 130)"><path d="M130 40C147 66 151 100 149 142H111C109 100 113 66 130 40Z"/><path d="M111 122 94 156l17-8M149 122l17 34-17-8"/><circle cx="130" cy="86" r="9"/><path d="M111 136h38"/><path d="M118 146Q130 196 142 146" stroke-opacity=".9"/><path d="M124 146Q130 172 136 146" stroke-opacity=".6"/></g>
+<path d="M170 56l30-22M178 80l34-18M190 104l32-12" stroke-opacity=".25"/>`),
+electricity:art(`<path d="M-10 288Q60 268 130 280T270 280" fill="#12131a"/>
+<path d="M110.6 270 124 120M149.4 270 136 120M124 120 130 66l6 54"/>
+<path d="M114.6 252h30.8M118 216h24M120.4 180h19.2M121.8 150h16.4"/>
+<path d="M113 252 140 216M147 252 120 216M117.5 216 138 180M142.5 216 122 180M120 180 137 150M140 180 123 150"/>
+<path d="M76 120h108M98 92h64M104 120l26-54M156 120l-26-54" />
+<path d="M76 120v12M184 120v12M98 92v12M162 92v12"/>
+<path d="M76 132Q40 150 -10 140M184 132Q220 150 270 140M98 104Q50 128 -10 118M162 104Q210 128 270 118" stroke-opacity=".8"/>
+<path d="M214 36l-14 24h12l-8 22 22-30h-13l9-16z" stroke-opacity=".95"/>`),
+thermo:art(`<path d="M-10 288Q60 270 130 282T270 282" fill="#12131a"/>
+<path d="M80 270C102 220 102 176 88 124h84C158 176 158 220 180 270Z"/><ellipse cx="130" cy="124" rx="42" ry="7"/>
+<path d="M97 196Q130 206 163 196M92 160Q130 170 168 160" stroke-opacity=".45"/>
+<circle cx="118" cy="96" r="14" stroke-opacity=".9"/><circle cx="142" cy="80" r="18" stroke-opacity=".75"/><circle cx="164" cy="52" r="15" stroke-opacity=".5"/><circle cx="112" cy="62" r="9" stroke-opacity=".4"/>
+<path d="M196 270V206l22-8V270M196 224h22M196 242h22" stroke-opacity=".7"/><path d="M30 270V220l18-6v56M30 238h18" stroke-opacity=".55"/>
+<path d="M104 286q6-8 12 0t12 0 12 0 12 0" stroke-opacity=".5"/>`),
+optics:art(`<path d="M-10 296H270" stroke-opacity=".25"/>
+<path d="M130 74 192 200H68Z"/><path d="M130 74 192 200H68Z" stroke-opacity=".3" transform="translate(0 0) scale(.82) translate(28.5 40)"/>
+<path d="M6 176 98 146" stroke-width="2.4"/><path d="M98 146 170 168" stroke-opacity=".7"/>
+<g stroke-width="1.8"><path d="M170 168 262 128" stroke="#ff7a7a"/><path d="M170 168 262 146" stroke="#ffb36b"/><path d="M170 168 262 164" stroke="#ffe36b"/><path d="M170 168 262 183" stroke="#7bf2a0"/><path d="M170 168 262 203" stroke="#6bb9ff"/><path d="M170 168 262 224" stroke="#ad8bff"/></g>`),
+quantum:art(`<rect x="40" y="214" width="180" height="30" rx="5" fill="#12131a"/><path d="M56 228h148M56 236h148" stroke-opacity=".3"/>
+<g transform="translate(26 34) rotate(55)"><path d="M0 0q9-15 18 0t18 0 18 0 18 0 18 0 18 0 18 0 18 0 18 0 18 0 18 0 18 0" stroke-width="1.8"/></g>
+<path d="M128 197l9 1-4-9" transform="rotate(0)" stroke-opacity="0"/>
+<g fill="#fff" stroke="none"><circle cx="172" cy="184" r="5" opacity=".95"/><circle cx="200" cy="154" r="4" opacity=".6"/><circle cx="224" cy="124" r="3" opacity=".3"/></g>
+<path d="M156 204 166 190M184 174 194 163M208 144 217 133" stroke-opacity=".45" stroke-dasharray="2 4"/>
+<g fill="#f2f1f5" stroke="none" font-family="Manrope,Arial,sans-serif" font-style="italic" font-size="14"><text x="42" y="92" opacity=".9">hν</text><text x="184" y="206" font-size="12" opacity=".8">e⁻</text></g>`)
+};
+const WHERE={
+mechanics:['Ракеты, самолёты и автомобили','Мосты, краны и лифты','Спорт и траектории мячей'],
+electricity:['Линии электропередач','Бытовая техника и освещение','Зарядка телефонов и гаджетов'],
+thermo:['Электростанции','Двигатели и турбины','Холодильники и кондиционеры'],
+optics:['Очки, камеры и микроскопы','Телескопы','Оптоволоконный интернет'],
+quantum:['Солнечные батареи','Лазеры и сканеры','МРТ и микрочипы']};
+function renderWhere(k){document.getElementById('whereBox').innerHTML=`<div class="where-art">${ART[k]}</div><figcaption><small>Где применяется</small><ul>${WHERE[k].map(x=>`<li>${x}</li>`).join('')}</ul></figcaption>`}
+if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)document.querySelectorAll('svg').forEach(s=>s.pauseAnimations&&s.pauseAnimations());
+
 const SRC={
 T22:['ТУСУР — пример решения открытого билета по физике, 2022','https://abiturient.tusur.ru/storage/152079/reshenie_bileta_2022_fizika.pdf'],
 T23:['ТУСУР — пример решения открытого билета (демо-1), 2023','https://abiturient.tusur.ru/storage/160161/Fizika_reshenie_2023_demo_1.pdf'],
@@ -316,7 +450,7 @@ sol:$h\nu=A_{\text{вых}}+E_k$, где $A_{\text{вых}}=\dfrac{hc}{\lambda_{
 ans:$U\approx1{,}4$ В
 note:результат согласуется с условием следующей задачи того же сборника (U = 1,4 В)`.split(/\n\s*\n/).forEach(b=>{let o={};b.trim().split('\n').forEach(l=>{if(l[0]==='@')o.t=l.slice(1);else{let i=l.indexOf(':');o[l.slice(0,i)]=l.slice(i+1)}});SOL[o.t]=o});
 const G={cdot:'·',Delta:'Δ',Gamma:'Γ',nu:'ν',lambda:'λ',alpha:'α',beta:'β',rho:'ρ',gamma:'γ',Rightarrow:'⇒',approx:'≈',circ:'°',',':' '};
-const plain=t=>t.replace(/\\text\{([^}]*)\}/g,'$1').replace(/\\d?frac\{((?:[^{}]|\{[^{}]*\})*)\}\{((?:[^{}]|\{[^{}]*\})*)\}/g,'($1)/($2)').replace(/\\([a-zA-Z]+|,)/g,(m,k)=>k in G?G[k]:(k==='left'||k==='right'||k==='displaystyle')?'':k).replace(/\$/g,'').replace(/[{}]/g,'');
+const plain=t=>t.replace(/\\text\{([^}]*)\}/g,'$1').replace(/\\d?frac\{((?:[^{}]|\{[^{}]*\})*)\}\{((?:[^{}]|\{[^{}]*\})*)\}/g,'($1)/($2)').replace(/\\([a-zA-Z]+|,)/g,(m,k)=>k in G?G[k]:(k==='left'||k==='right'||k==='displaystyle')?'':k).replace(/\\ /g,' ').replace(/\^°/g,'°').replace(/\$/g,'').replace(/[{}]/g,'');
 const M=t=>window.noMath?plain(t):t;
 function sol(t){let o=SOL[t];if(!o)return '<div class="nosol">Задача из проверенного источника для этой формулы пока не добавлена.</div>';
  let k=o.src.replace('*',''),r=SRC[k],calc=o.src.endsWith('*');
@@ -327,11 +461,11 @@ function sol(t){let o=SOL[t];if(!o)return '<div class="nosol">Задача из 
 <div class="s-row"><b>Ответ:</b><span>${M(o.ans)}</span></div>
 <div class="s-src">Источник: <a href="${r[1]}" target="_blank" rel="noopener">${r[0]}</a>${calc?' · условие из источника, решение расписано по формуле':''}${o.note?' · '+o.note:''}</div></div>`}
 function buildTabs(){document.getElementById('topicTabs').innerHTML=Object.keys(lessons).map(k=>`<button class="tool-tab${k===currentLesson?' active':''}" onclick="openTopic('${k}')">${lessons[k].title}</button>`).join('')}
-function openTopic(key){currentLesson=key;document.getElementById('homeContent').classList.add('hidden');let p=document.getElementById('learningPage');p.classList.add('active');document.getElementById('lessonTitle').textContent=lessons[key].title;document.getElementById('lessonLead').textContent=lessons[key].lead;document.getElementById('noteContent').textContent=lessons[key].note;document.getElementById('sideNote').classList.remove('open');document.getElementById('noteArrow').textContent='＋';buildTabs();renderLesson();p.scrollIntoView({behavior:'smooth',block:'start'});}
+function openTopic(key){currentLesson=key;document.getElementById('homeContent').classList.add('hidden');let p=document.getElementById('learningPage');p.classList.add('active');document.getElementById('lessonTitle').textContent=lessons[key].title;document.getElementById('lessonLead').textContent=lessons[key].lead;document.getElementById('noteContent').textContent=lessons[key].note;document.getElementById('sideNote').classList.remove('open');buildTabs();renderWhere(key);renderLesson();p.scrollIntoView({behavior:'smooth',block:'start'});}
 function showHome(){document.getElementById('learningPage').classList.remove('active');document.getElementById('homeContent').classList.remove('hidden');document.getElementById('topics').scrollIntoView({behavior:'smooth'});}
 function goTo(id){let L=document.getElementById('learningPage');if(L.classList.contains('active')){L.classList.remove('active');document.getElementById('homeContent').classList.remove('hidden')}
  requestAnimationFrame(()=>{let el=document.getElementById(id);if(id==='home'||!el)window.scrollTo({top:0,behavior:'smooth'});else el.scrollIntoView({behavior:'smooth',block:'start'})})}
-function toggleNote(){let n=document.getElementById('sideNote');n.classList.toggle('open');document.getElementById('noteArrow').textContent=n.classList.contains('open')?'−':'＋';}
+function toggleNote(){let n=document.getElementById('sideNote');n.classList.toggle('open');}
 function renderLesson(){let d=lessons[currentLesson],c=document.getElementById('lessonContent');
  c.innerHTML=d.items.map((x,i)=>{let t=TEX[x[0]]||x[1];return `<article class="formula-card"><h3>${i+1}. ${x[0]}</h3><div class="formula">${window.noMath?plain(t):'\\[\\displaystyle '+t+'\\]'}</div><div class="formula-note">${x[2]}</div><div class="symbols"><span class="symbol">${x[3]}</span></div>${sol(x[0])}</article>`}).join('');
  if(window.MathJax&&MathJax.typesetPromise&&!window.noMath)MathJax.typesetPromise([c]).catch(()=>{});}
