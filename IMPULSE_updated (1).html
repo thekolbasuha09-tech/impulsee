@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IMPULSE — Мир физики</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111114;--muted:#73737b;--paper:#f2f1f5;--white:#fff;--line:rgba(20,20,25,.12);--shadow:0 12px 28px rgba(22,20,30,.12)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Manrope,Arial,sans-serif}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}.hero{min-height:620px;height:82vh;max-height:790px;position:relative;color:white;overflow:hidden;background:#050608 url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2200&q=90') center 48%/cover no-repeat}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.7),rgba(0,0,0,.12) 42%,rgba(0,0,0,.8)),linear-gradient(90deg,rgba(0,0,0,.38),transparent 70%)}.hero:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 55% 55%,transparent 15%,rgba(0,0,0,.35) 90%)}
+.nav{position:relative;z-index:2;max-width:1320px;margin:auto;padding:28px 5.5%;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.28em;font-weight:600}.brand-mark{font-size:27px;line-height:1}.navlinks{display:flex;align-items:center;gap:32px;font-size:11px;color:rgba(255,255,255,.7)}.navlinks a{transition:.25s}.navlinks a:hover,.navlinks a.active{color:#fff}.navlinks a.active{padding:9px 16px;border:1px solid rgba(255,255,255,.45);border-radius:30px;box-shadow:0 0 14px rgba(255,255,255,.3)}.search{font-size:20px;color:#ddd}
+.hero-content{position:relative;z-index:2;text-align:center;margin:100px auto 0;padding:0 20px}.eyebrow{font-size:10px;letter-spacing:.32em;color:rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;gap:14px}.eyebrow:before,.eyebrow:after{content:"";width:34px;height:1px;background:rgba(255,255,255,.35)}.hero h1{font-size:clamp(42px,7vw,76px);font-weight:400;letter-spacing:.35em;margin:14px 0 4px;padding-left:.35em}.tagline{font-size:11px;letter-spacing:.5em;color:rgba(255,255,255,.72);padding-left:.5em}.glow-btn{margin-top:28px;display:inline-flex;align-items:center;gap:14px;padding:14px 26px;border-radius:40px;color:#fff;background:rgba(8,8,12,.42);border:1px solid rgba(255,255,255,.72);box-shadow:0 0 9px rgba(255,255,255,.5),inset 0 0 12px rgba(255,255,255,.12),0 8px 24px rgba(0,0,0,.4);font-size:12px;transition:transform .25s,box-shadow .25s,background .25s}.glow-btn:hover{transform:translateY(-3px);background:rgba(255,255,255,.12);box-shadow:0 0 18px rgba(255,255,255,.8),inset 0 0 15px rgba(255,255,255,.2),0 12px 28px rgba(0,0,0,.35)}.glow-btn:active{transform:translateY(1px) scale(.98)}.hero-foot{position:absolute;z-index:2;bottom:40px;left:5.5%;right:5.5%;display:flex;justify-content:space-between;align-items:end;color:rgba(255,255,255,.75);font-size:10px}.quote-mini{max-width:300px;line-height:1.6}.quote-mini b{font-size:24px;vertical-align:-8px;margin-right:8px}.date{display:flex;align-items:center;gap:14px}
+main{background:var(--paper);position:relative}.topics{max-width:1200px;margin:-1px auto 0;padding:25px 5.5% 0;display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;z-index:3}.topic{display:flex;justify-content:center;align-items:center;min-height:80px;border-right:1px solid var(--line)}.topic:last-child{border:0}.topic button{width:min(150px,90%);height:70px;border:1px solid rgba(255,255,255,.9);border-radius:19px;background:linear-gradient(145deg,#faf9fc,#e4e3e9);box-shadow:8px 8px 18px rgba(24,22,34,.12),-7px -7px 16px rgba(255,255,255,.9),inset 1px 1px 1px #fff;color:#202027;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;transition:.25s}.topic button:hover{transform:translateY(-5px);box-shadow:10px 14px 22px rgba(24,22,34,.16),-5px -5px 13px #fff}.topic button:active{transform:translateY(-1px) scale(.98)}.topic .ico{font-size:27px;line-height:1.1;font-weight:300}.topic span:last-child{font-size:10px;font-weight:600}
+.intro{max-width:1320px;margin:auto;padding:50px 5.5% 45px;min-height:320px;display:grid;grid-template-columns: .9fr 1.1fr;align-items:center;gap:40px}.intro h2{font-size:clamp(28px,3.4vw,42px);font-weight:500;line-height:1.16;margin:0 0 16px;letter-spacing:-.04em}.intro p{max-width:350px;font-size:13px;line-height:1.65;color:#55545c;margin:0}.dark-btn{margin-top:22px;border:0;border-radius:30px;padding:13px 22px;background:linear-gradient(145deg,#29292d,#050506);color:white;box-shadow:6px 7px 15px rgba(0,0,0,.24),inset 0 1px 1px rgba(255,255,255,.3);font-size:11px;transition:.25s}.dark-btn:hover{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(0,0,0,.1),0 10px 24px rgba(0,0,0,.28)}.dark-btn:active{transform:translateY(1px) scale(.98)}.atom-wrap{height:280px;display:flex;align-items:center;justify-content:center;position:relative}.atom{width:300px;height:230px;position:relative;filter:drop-shadow(0 12px 14px rgba(0,0,0,.2))}.orbit{position:absolute;left:50%;top:50%;width:260px;height:100px;border:2px solid rgba(70,70,78,.85);border-radius:50%;transform:translate(-50%,-50%) rotate(25deg)}.orbit.two{transform:translate(-50%,-50%) rotate(-35deg)}.orbit.three{transform:translate(-50%,-50%) rotate(90deg);width:240px;height:90px}.nucleus{position:absolute;left:50%;top:50%;width:49px;height:49px;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle at 30% 25%,#fff,#85858b 28%,#29292e 65%,#08080a);box-shadow:0 8px 18px #777}.electron{position:absolute;width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff,#777 45%,#151519 80%);box-shadow:0 4px 8px #888}.e1{top:31px;left:42px}.e2{right:22px;top:80px;width:14px;height:14px}.e3{bottom:22px;left:82px;width:15px;height:15px}
+.banner{max-width:1320px;margin:0 auto;padding:0 1.8%}.quote-banner{min-height:110px;border-radius:18px;overflow:hidden;background:#08090b url('https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&w=1800&q=85') center 45%/cover no-repeat;position:relative;color:#fff;display:flex;align-items:center;justify-content:flex-end;padding:25px 9%;box-shadow:0 12px 22px rgba(0,0,0,.12)}.quote-banner:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.12),rgba(0,0,0,.86) 45%,rgba(0,0,0,.75))}.quote-text{position:relative;max-width:440px;border-left:1px solid rgba(255,255,255,.6);padding-left:30px;font-size:13px;line-height:1.6}.quote-text small{display:block;text-align:right;margin-top:8px;color:rgba(255,255,255,.65);font-size:9px}
+.sections{max-width:1320px;margin:auto;padding:44px 3.5% 70px}.section-head{display:flex;justify-content:space-between;align-items:end;padding:0 1% 20px}.section-head small{font-size:9px;letter-spacing:.18em;color:#85838b}.section-head h2{font-size:25px;font-weight:500;margin:5px 0 0;letter-spacing:-.04em}.all{font-size:10px;color:#38373d}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{height:220px;border-radius:19px;position:relative;overflow:hidden;padding:22px 20px;background:#d8d8dc;box-shadow:0 10px 22px rgba(20,18,30,.1);transition:transform .3s,box-shadow .3s}.card:hover{transform:translateY(-6px);box-shadow:0 17px 28px rgba(20,18,30,.16)}.card:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.18) 42%,rgba(255,255,255,.92) 100%)}.card:nth-child(1){background:url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=85') center/cover}.card:nth-child(2){background:url('https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=900&q=85') center/cover}.card:nth-child(3){background:url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85') center/cover}.card:nth-child(4){background:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85') center/cover}.card-content{position:absolute;z-index:1;left:20px;right:20px;bottom:18px}.card h3{font-size:15px;font-weight:700;margin:0 0 5px}.card p{font-size:10px;color:#55545b;margin:0}.arrow{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.9);box-shadow:0 4px 10px rgba(0,0,0,.08);display:grid;place-items:center;margin-top:13px;font-size:17px;transition:.2s}.card:hover .arrow{transform:translateX(4px);background:#fff}
+footer{background:#08090b;color:#aaa;padding:25px 5.5%;display:flex;justify-content:space-between;font-size:10px;letter-spacing:.08em}.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;place-items:center;z-index:10;padding:20px}.modal.show{display:grid}.modal-box{width:min(480px,100%);background:#f6f5f8;border-radius:22px;padding:30px;box-shadow:0 25px 80px rgba(0,0,0,.35);position:relative}.modal-box h2{font-weight:600;margin:0 0 10px}.modal-box p{font-size:13px;line-height:1.6;color:#666}.close{position:absolute;right:18px;top:14px;border:0;background:none;font-size:24px;color:#555}
+@media(max-width:800px){.hero{height:690px;min-height:620px}.nav{padding:22px 5%}.navlinks{gap:13px;font-size:9px}.navlinks a:nth-child(4),.navlinks a:nth-child(5),.navlinks a:nth-child(6){display:none}.hero-content{margin-top:130px}.hero-foot{bottom:28px}.topics{padding-left:2%;padding-right:2%}.topic button{height:64px}.topic span:last-child{font-size:8px}.intro{grid-template-columns:1fr;gap:0;padding-top:42px}.atom-wrap{height:230px}.cards{grid-template-columns:repeat(2,1fr)}.card{height:205px}.quote-banner{min-height:125px;padding:22px 5%}.quote-text{max-width:330px}}
+@media(max-width:480px){.navlinks{gap:10px}.navlinks a:nth-child(3){display:none}.brand{font-size:10px}.hero-content{margin-top:145px}.hero h1{font-size:39px;letter-spacing:.2em}.tagline{font-size:9px;letter-spacing:.3em}.hero-foot{font-size:8px}.quote-mini{max-width:220px}.topics{grid-template-columns:repeat(5,1fr);padding-top:17px}.topic{min-height:68px}.topic button{width:94%;height:60px;border-radius:13px}.topic .ico{font-size:21px}.topic span:last-child{font-size:7px}.intro{padding:35px 7% 30px}.atom{transform:scale(.85)}.sections{padding:36px 4% 50px}.cards{gap:11px}.card{height:180px;padding:15px}.card-content{left:14px;right:14px;bottom:13px}.card h3{font-size:13px}.card p{font-size:9px}.arrow{width:28px;height:28px;margin-top:9px}.section-head h2{font-size:22px}footer{gap:12px;flex-wrap:wrap}}
+
+.hero{height:100vh;min-height:650px;max-height:none}.hero-content{margin-top:clamp(110px,20vh,190px)}
+.hero h1{font-weight:800;letter-spacing:.18em;font-size:clamp(58px,10vw,112px);text-shadow:0 8px 35px rgba(0,0,0,.28)}
+.brand span:last-child{font-weight:800;letter-spacing:.22em}
+.learning{max-width:1320px;margin:auto;padding:48px 5.5% 80px;display:none}.learning.active{display:block;animation:rise .35s ease}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.learning-top{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:28px}
+.back-btn,.tool-tab{border:1px solid var(--line);background:transparent;border-radius:30px;padding:11px 17px;font-size:11px;color:#333;cursor:pointer}
+.learning-kicker{font-size:9px;letter-spacing:.2em;color:#888}.learning h2{font-size:clamp(30px,4vw,48px);font-weight:500;letter-spacing:-.05em;margin:7px 0}
+.learning-lead{font-size:13px;color:#666;max-width:650px;line-height:1.7}
+.lesson-layout{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:22px;align-items:start}
+.formula-list{display:grid;gap:12px}.formula-card{background:#fff;border:1px solid rgba(20,20,25,.07);border-radius:16px;padding:20px 22px;box-shadow:0 8px 20px rgba(22,20,30,.045)}
+.formula-card h3{font-size:14px;margin:0 0 12px}.formula{font-size:clamp(19px,2.3vw,27px);font-weight:600;margin:5px 0 12px;color:#17171b}
+.formula-note{font-size:11px;line-height:1.7;color:#777}.symbols{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.symbol{background:#f2f1f5;border-radius:7px;padding:6px 9px;font-size:10px;color:#555}
+.side-note{position:sticky;top:20px}.note-toggle{width:100%;border:1px solid var(--line);background:#e9e8ed;border-radius:12px;padding:12px 14px;text-align:left;display:flex;justify-content:space-between;font-size:11px;color:#555;cursor:pointer;transition:.25s}
+.note-content{overflow:hidden;max-height:0;opacity:0;transition:max-height .35s ease,opacity .25s ease,padding .25s ease;background:#fff;border-radius:0 0 12px 12px;font-size:11px;line-height:1.75;color:#777;padding:0 14px}
+.side-note.open .note-content{max-height:300px;opacity:1;padding:13px 14px}.side-note.open .note-toggle{background:#17171b;color:#fff;border-radius:12px 12px 0 0}
+.lesson-tools{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}.tool-tab{padding:9px 14px;font-size:10px;color:#555}.tool-tab.active{background:#17171b;color:#fff}
+.formula{font-weight:400}.formula mjx-container{margin:.15em 0!important;text-align:left!important}
+.solution{margin-top:16px;background:#17171b;color:#e3e3e8;border-radius:14px;padding:18px 20px;font-size:12px;line-height:1.9;overflow-x:auto}.solution mjx-container{color:#fff}
+.s-cond{color:#fff;font-weight:600;margin-bottom:10px;line-height:1.65}.s-row{display:grid;grid-template-columns:74px 1fr;gap:10px;padding:8px 0;border-top:1px solid rgba(255,255,255,.1)}.s-row b{color:#fff;font-weight:700}
+.s-src{margin-top:8px;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);font-size:10px;line-height:1.6;color:#9a9aa3}.s-src a{color:#cfcfd6;text-decoration:underline}
+.nosol{margin-top:14px;font-size:11px;line-height:1.6;color:#8a8a93;border:1px dashed var(--line);border-radius:12px;padding:11px 14px}#homeContent.hidden{display:none}
+@media(max-width:800px){.hero{height:100svh;min-height:620px}.lesson-layout{grid-template-columns:1fr}.side-note{position:static;order:-1}.learning{padding:35px 5% 60px}}
+
+</style>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},options:{enableMenu:false}};</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js" onerror="window.noMath=1;try{renderLesson()}catch(e){}"></script>
+</head>
+<body>
+<header class="hero" id="home">
+ <nav class="nav"><a class="brand" href="#home"><span class="brand-mark">✳</span><span>IMPULSE</span></a><div class="navlinks"><a class="active" href="#home">Главная</a><a href="#topics">Разделы</a><a href="#formulas">Обучение</a><a href="#about">О проекте</a></div><a class="search" href="#formulas" aria-label="Поиск">⌕</a></nav>
+ <div class="hero-content"><div class="eyebrow">ОБРАЗОВАТЕЛЬНАЯ ПЛАТФОРМА</div><h1>IMPULSE</h1><div class="tagline">Изучай. Понимай. Решай.</div><a class="glow-btn" href="#topics">Начать обучение <span>↓</span></a></div>
+ <div class="hero-foot"><div class="quote-mini"><b>“</b>Физика — это не просто наука,<br>а ключ к пониманию Вселенной.</div><div class="date">12.11.2026　◌</div></div>
+</header>
+<main>
+<div id="homeContent">
+<section class="topics" id="topics">
+<div class="topic"><button onclick="openTopic('mechanics')"><span class="ico">↗</span><span>Механика</span></button></div>
+<div class="topic"><button onclick="openTopic('electricity')"><span class="ico">ϟ</span><span>Электричество</span></button></div>
+<div class="topic"><button onclick="openTopic('thermo')"><span class="ico">♨</span><span>Термодинамика</span></button></div>
+<div class="topic"><button onclick="openTopic('optics')"><span class="ico">☼</span><span>Оптика</span></button></div>
+<div class="topic"><button onclick="openTopic('quantum')"><span class="ico">◉</span><span>Квантовая физика</span></button></div>
+</section>
+<section class="intro" id="about"><div><h2>Твой проводник<br>в мир физики</h2><p>Изучай физику по разделам: разбирай обозначения, понимай смысл формул и смотри пошаговые примеры решений.</p><button class="dark-btn" onclick="document.getElementById('topics').scrollIntoView({behavior:'smooth'})">Выбрать раздел　→</button></div><div class="atom-wrap"><div class="atom"><i class="orbit"></i><i class="orbit two"></i><i class="orbit three"></i><i class="nucleus"></i><i class="electron e1"></i><i class="electron e2"></i><i class="electron e3"></i></div></div></section>
+<div class="banner"><div class="quote-banner"><div class="quote-text">Понимать физику — значит видеть закономерности в окружающем мире.<small>— IMPULSE</small></div></div></div>
+<section class="sections" id="formulas"><div class="section-head"><div><small>ОБУЧЕНИЕ</small><h2>Выбери, что изучать</h2></div><span class="all">5 разделов　→</span></div>
+<div class="cards">
+<a class="card" href="#topics" onclick="openTopic('mechanics');return false"><div class="card-content"><h3>Механика</h3><p>Движение, силы и энергия</p><span class="arrow">→</span></div></a>
+<a class="card" href="#topics" onclick="openTopic('electricity');return false"><div class="card-content"><h3>Электричество</h3><p>Ток, напряжение и сопротивление</p><span class="arrow">→</span></div></a>
+<a class="card" href="#topics" onclick="openTopic('optics');return false"><div class="card-content"><h3>Оптика</h3><p>Свет и линзы</p><span class="arrow">→</span></div></a>
+<a class="card" href="#topics" onclick="openTopic('quantum');return false"><div class="card-content"><h3>Квантовая физика</h3><p>Фотоны и энергия</p><span class="arrow">→</span></div></a>
+</div></section></div>
+<section class="learning" id="learningPage">
+<div class="learning-top"><div><div class="learning-kicker">БИБЛИОТЕКА ФИЗИКИ / ОБУЧЕНИЕ</div><h2 id="lessonTitle"></h2><p class="learning-lead" id="lessonLead"></p></div><button class="back-btn" onclick="showHome()">← Все разделы</button></div>
+<div class="lesson-tools" id="topicTabs"></div>
+<div class="lesson-layout"><div id="lessonContent" class="formula-list"></div><aside class="side-note" id="sideNote"><button class="note-toggle" onclick="toggleNote()"><strong>Что это и зачем?</strong><span id="noteArrow">＋</span></button><div class="note-content" id="noteContent"></div></aside></div>
+</section></main><footer><span>✳　IMPULSE</span><span>Изучай. Понимай. Решай.</span><span>© 2026</span></footer>
+<script>
+const lessons={
+mechanics:{title:'Механика',lead:'Изучает движение тел, причины движения и взаимодействие между телами.',note:'Механика помогает описывать, как движутся тела и почему меняется их движение. Сначала выпиши известные величины, затем выбери формулу, связывающую их с искомой.',items:[
+['Равномерное движение','s = v · t','s — путь (м); v — скорость (м/с); t — время (с)','Используется, если скорость постоянна.'],
+['Скорость','v = s / t','v — скорость; s — путь; t — время','Путь, пройденный за единицу времени.'],
+['Ускорение','a = (v − v₀) / t','a — ускорение (м/с²); v₀ — начальная скорость; v — конечная; t — время','Показывает быстроту изменения скорости.'],
+['Скорость при ускорении','v = v₀ + a · t','v₀ — начальная скорость; a — ускорение; t — время','Находит скорость через время.'],
+['Перемещение','s = v₀t + at² / 2','s — перемещение; v₀ — начальная скорость; a — ускорение; t — время','Для равноускоренного движения.'],
+['Второй закон Ньютона','F = m · a','F — сила (Н); m — масса (кг); a — ускорение (м/с²)','Связывает силу, массу и ускорение.'],
+['Сила тяжести','Fтяж = m · g','m — масса; g ≈ 9,8 м/с²','Сила притяжения тела Землёй.'],
+['Импульс тела','p = m · v','p — импульс; m — масса; v — скорость','Характеризует механическое движение.'],
+['Кинетическая энергия','Eк = mv² / 2','m — масса; v — скорость','Энергия движущегося тела.'],
+['Потенциальная энергия','Eп = mgh','m — масса; g — ускорение свободного падения; h — высота','Энергия тела на высоте.']
+]},
+electricity:{title:'Электричество',lead:'Изучает электрические заряды, ток, напряжение, сопротивление и электрическую энергию.',note:'Формулы электричества нужны для расчёта цепей. Ток измеряется в амперах, напряжение — в вольтах, сопротивление — в омах.',items:[
+['Сила тока','I = q / t','I — ток (А); q — заряд (Кл); t — время (с)','Заряд, проходящий за единицу времени.'],
+['Закон Ома','I = U / R','I — ток (А); U — напряжение (В); R — сопротивление (Ом)','Основная формула участка цепи.'],
+['Напряжение','U = A / q','U — напряжение; A — работа (Дж); q — заряд (Кл)','Работа поля на единицу заряда.'],
+['Сопротивление','R = ρ · l / S','ρ — удельное сопротивление; l — длина; S — площадь сечения','Зависит от материала и размеров проводника.'],
+['Мощность тока','P = U · I','P — мощность (Вт); U — напряжение; I — ток','Скорость преобразования электрической энергии.'],
+['Работа тока','A = U · I · t','A — работа (Дж); U — напряжение; I — ток; t — время','Энергия, переданная током за время.'],
+['Закон Джоуля — Ленца','Q = I² · R · t','Q — теплота (Дж); I — ток; R — сопротивление; t — время','Теплота, выделяемая током.']
+]},
+thermo:{title:'Термодинамика',lead:'Изучает тепловые явления, внутреннюю энергию, количество теплоты и её передачу.',note:'Различай температуру, количество теплоты и внутреннюю энергию. Учитывай массу вещества и его удельную теплоёмкость.',items:[
+['Нагревание и охлаждение','Q = c · m · ΔT','Q — теплота; c — удельная теплоёмкость; m — масса; ΔT — изменение температуры','Без фазового перехода.'],
+['Плавление','Q = λ · m','λ — удельная теплота плавления; m — масса','Теплота для плавления вещества.'],
+['Парообразование','Q = L · m','L — удельная теплота парообразования; m — масса','Теплота для превращения жидкости в пар.'],
+['Первый закон термодинамики','Q = ΔU + A','Q — теплота; ΔU — изменение внутренней энергии; A — работа системы','Связывает теплоту, энергию и работу.'],
+['Работа газа','A = p · ΔV','p — давление (Па); ΔV — изменение объёма (м³)','Для процесса при постоянном давлении.'],
+['Уравнение идеального газа','pV = νRT','p — давление; V — объём; ν — количество вещества; R — газовая постоянная; T — температура','Связывает параметры идеального газа.']
+]},
+optics:{title:'Оптика',lead:'Изучает свет, его распространение, отражение, преломление и изображения в линзах.',note:'Определи тип явления: отражение, преломление или построение изображения. Углы падения и отражения измеряются от перпендикуляра к поверхности.',items:[
+['Закон отражения','α = β','α — угол падения; β — угол отражения','Угол падения равен углу отражения.'],
+['Показатель преломления','n = c / v','n — показатель преломления; c — скорость света в вакууме; v — скорость в среде','Показывает, во сколько раз свет медленнее в среде.'],
+['Закон преломления','n₁ sin α = n₂ sin β','n₁, n₂ — показатели преломления; α — угол падения; β — угол преломления','Описывает изменение направления света.'],
+['Тонкая линза','1/F = 1/d + 1/f','F — фокусное расстояние; d — расстояние до предмета; f — расстояние до изображения','Связывает положение предмета и изображения.'],
+['Оптическая сила','D = 1 / F','D — оптическая сила (дптр); F — фокусное расстояние (м)','Характеризует преломляющую способность линзы.'],
+['Увеличение линзы','Γ = H / h = f / d','H — высота изображения; h — высота предмета; f и d — расстояния','Показывает, во сколько раз изображение больше предмета.']
+]},
+quantum:{title:'Квантовая физика',lead:'Изучает микромир: атомы, электроны, фотоны и квантовые закономерности.',note:'Квантовые формулы описывают энергию и свойства микрочастиц. Постоянная Планка связывает энергию фотона с частотой.',items:[
+['Энергия фотона','E = h · ν','E — энергия (Дж); h — постоянная Планка; ν — частота (Гц)','Энергия фотона прямо пропорциональна частоте.'],
+['Частота и длина волны','c = λ · ν','c — скорость света; λ — длина волны; ν — частота','Позволяет перейти от длины волны к частоте.'],
+['Импульс фотона','p = h / λ','p — импульс фотона; h — постоянная Планка; λ — длина волны','Фотон переносит импульс.'],
+['Фотоэффект','hν = Aвых + Eк','Aвых — работа выхода; Eк — кинетическая энергия электрона','Энергия фотона расходуется на выход электрона и его движение.'],
+['Связь массы и энергии','E = m · c²','E — энергия; m — масса; c — скорость света','Показывает эквивалентность массы и энергии.'],
+['Уровни энергии водорода','Eₙ = −13,6 / n² эВ','n — главное квантовое число (1, 2, 3…)','Энергия уровня электрона в атоме водорода.']
+]}
+};
+let currentLesson='mechanics';
+const SRC={
+T22:['ТУСУР — пример решения открытого билета по физике, 2022','https://abiturient.tusur.ru/storage/152079/reshenie_bileta_2022_fizika.pdf'],
+T23:['ТУСУР — пример решения открытого билета (демо-1), 2023','https://abiturient.tusur.ru/storage/160161/Fizika_reshenie_2023_demo_1.pdf'],
+T11:['ТУСУР — открытый билет, 11 класс','https://abiturient.tusur.ru/storage/98031/Fizika_11.pdf'],
+NG:['НГТУ — Пятаева, Бакулова. Динамика и законы сохранения','https://dispace.edu.nstu.ru/didesk/file/get/195025'],
+B8:['Физика, 8 класс (Беларусь) — пример решения задачи','https://eior.by/upload/books/8-klass/fizika/ФИР08_0217.pdf'],
+B11:['Физика, 11 класс (Беларусь) — упражнение 17','https://eior.by/upload/books/11-klass/fizika/bel/fizika_11kl_by_19.pdf'],
+FE:['Сборник задач «Фотоэффект», задача 2','https://sh-alarskaya-r138.gosweb.gosuslugi.ru/netcat_files/33/44/Zadachi_fotoeffekt.pdf'],
+OM:['Ответы Mail.ru — вопрос о 150 г воды','https://otvet.mail.ru/question/67665583']};
+const TEX={};String.raw`Равномерное движение|s = v\cdot t
+Скорость|v=\dfrac{s}{t}
+Ускорение|a=\dfrac{v-v_0}{t}
+Скорость при ускорении|v=v_0+a t
+Перемещение|s=v_0 t+\dfrac{a t^2}{2}
+Второй закон Ньютона|F=m a
+Сила тяжести|F_{\text{тяж}}=m g
+Импульс тела|p=m v
+Кинетическая энергия|E_k=\dfrac{m v^2}{2}
+Потенциальная энергия|E_p=m g h
+Сила тока|I=\dfrac{q}{t}
+Закон Ома|I=\dfrac{U}{R}
+Напряжение|U=\dfrac{A}{q}
+Сопротивление|R=\rho\,\dfrac{l}{S}
+Мощность тока|P=U I
+Работа тока|A=U I t
+Закон Джоуля — Ленца|Q=I^2 R t
+Нагревание и охлаждение|Q=c\,m\,\Delta T
+Плавление|Q=\lambda m
+Парообразование|Q=L m
+Первый закон термодинамики|Q=\Delta U+A
+Работа газа|A=p\,\Delta V
+Уравнение идеального газа|p V=\nu R T
+Закон отражения|\alpha=\beta
+Показатель преломления|n=\dfrac{c}{v}
+Закон преломления|n_1\sin\alpha=n_2\sin\beta
+Тонкая линза|\dfrac{1}{F}=\dfrac{1}{d}+\dfrac{1}{f}
+Оптическая сила|D=\dfrac{1}{F}
+Увеличение линзы|\Gamma=\dfrac{H}{h}=\dfrac{f}{d}
+Энергия фотона|E=h\nu
+Частота и длина волны|c=\lambda\nu
+Импульс фотона|p=\dfrac{h}{\lambda}
+Фотоэффект|h\nu=A_{\text{вых}}+E_k
+Связь массы и энергии|E=m c^2
+Уровни энергии водорода|E_n=-\dfrac{13{,}6}{n^2}\ \text{эВ}`.split('\n').forEach(l=>{let i=l.indexOf('|');TEX[l.slice(0,i)]=l.slice(i+1)});
+// src: звёздочка = условие взято из источника, решение расписано по формуле
+const SOL={};String.raw`@Равномерное движение
+src:T11*
+cond:Катер переправляется через реку перпендикулярно течению со скоростью 4 м/с относительно воды. На сколько метров его снесёт течением, если ширина реки 800 м, а скорость течения 3 м/с?
+given:$v_1=4$ м/с;$d=800$ м;$v_2=3$ м/с
+find:$s$ — ?
+sol:Время переправы: $t=\dfrac{d}{v_1}=\dfrac{800}{4}=200$ с|Снос вдоль берега: $s=v_2\cdot t=3\cdot200=600$ м
+ans:$s=600$ м
+
+@Перемещение
+src:T22
+cond:Тело начинает двигаться из состояния покоя с ускорением 2 м/с². Найти перемещение за 3 с.
+given:$a=2$ м/с²;$t=3$ с;$v_0=0$
+find:$s$ — ?
+sol:$s=v_0t+\dfrac{at^2}{2}=\dfrac{2\cdot3^2}{2}=9$ м
+ans:$s=9$ м
+
+@Второй закон Ньютона
+src:T23
+cond:На столе лежит брусок массой 3 кг. Его тянут вдоль стола с силой 15 Н. Найти ускорение, если сила трения равна 0,1 силы тяжести.
+given:$m=3$ кг;$F=15$ Н;$F_{\text{тр}}=0{,}1\,mg$;$g=9{,}8$ м/с²
+find:$a$ — ?
+sol:Вдоль оси $x$: $ma=F-F_{\text{тр}}$|$a=\dfrac{F-0{,}1\,mg}{m}=\dfrac{15-0{,}1\cdot3\cdot9{,}8}{3}\approx4{,}02$ м/с²
+ans:$a\approx4{,}02$ м/с²
+
+@Импульс тела
+src:NG*
+cond:Тело массой 2 кг, движущееся со скоростью 3 м/с, нагоняет тело массой 3 кг, движущееся со скоростью 1 м/с. Найти скорость тел после неупругого удара.
+given:$m_1=2$ кг;$v_1=3$ м/с;$m_2=3$ кг;$v_2=1$ м/с
+find:$v$ — ?
+sol:Закон сохранения импульса: $m_1v_1+m_2v_2=(m_1+m_2)\,v$|$v=\dfrac{m_1v_1+m_2v_2}{m_1+m_2}=\dfrac{2\cdot3+3\cdot1}{2+3}=1{,}8$ м/с
+ans:$v=1{,}8$ м/с
+note:в источнике указано 2 м/с, но подстановка даёт 1,8 м/с
+
+@Кинетическая энергия
+src:T11*
+cond:Импульс летящего мяча равен 1,2 кг·м/с, масса мяча 0,3 кг. Найти кинетическую энергию мяча.
+given:$p=1{,}2$ кг·м/с;$m=0{,}3$ кг
+find:$E_k$ — ?
+sol:Скорость: $v=\dfrac{p}{m}=\dfrac{1{,}2}{0{,}3}=4$ м/с|$E_k=\dfrac{mv^2}{2}=\dfrac{0{,}3\cdot4^2}{2}=2{,}4$ Дж
+ans:$E_k=2{,}4$ Дж
+
+@Потенциальная энергия
+src:T22
+cond:Потенциальная энергия тела на высоте 5 м равна 980 Дж. Найти массу тела.
+given:$E_p=980$ Дж;$h=5$ м;$g=9{,}8$ м/с²
+find:$m$ — ?
+sol:$E_p=mgh\ \Rightarrow\ m=\dfrac{E_p}{gh}=\dfrac{980}{9{,}8\cdot5}=20$ кг
+ans:$m=20$ кг
+
+@Сила тока
+src:T22
+cond:За 3 мин через сечение проводника прошёл заряд 0,36 Кл. Найти силу тока (в мА).
+given:$q=0{,}36$ Кл;$t=3$ мин $=180$ с
+find:$I$ — ?
+sol:$I=\dfrac{q}{t}=\dfrac{0{,}36}{180}=2\cdot10^{-3}$ А $=2$ мА
+ans:$I=2$ мА
+
+@Закон Ома
+src:T11*
+cond:Через поперечное сечение резистора сопротивлением 17 Ом за каждые 5 с переносится заряд 10 Кл. Найти силу тока и напряжение на резисторе.
+given:$R=17$ Ом;$q=10$ Кл;$t=5$ с
+find:$I$, $U$ — ?
+sol:$I=\dfrac{q}{t}=\dfrac{10}{5}=2$ А|Из $I=\dfrac{U}{R}$: $U=IR=2\cdot17=34$ В
+ans:$I=2$ А; $U=34$ В
+
+@Сопротивление
+src:B8*
+cond:Проводник сечением 0,20 мм² подключён к напряжению 4,5 В, сила тока в нём 300 мА. Найти длину проводника, если его удельное сопротивление 0,40 Ом·мм²/м.
+given:$U=4{,}5$ В;$I=0{,}30$ А;$S=0{,}20$ мм²;$\rho=0{,}40$ Ом·мм²/м
+find:$l$ — ?
+sol:$R=\rho\dfrac{l}{S}$ и $R=\dfrac{U}{I}$, поэтому $\rho\dfrac{l}{S}=\dfrac{U}{I}$|$l=\dfrac{US}{\rho I}=\dfrac{4{,}5\cdot0{,}20}{0{,}40\cdot0{,}30}=7{,}5$ м
+ans:$l=7{,}5$ м
+
+@Мощность тока
+src:T11*
+cond:Через поперечное сечение резистора сопротивлением 17 Ом за каждые 5 с переносится заряд 10 Кл. Найти мощность, выделяющуюся в резисторе.
+given:$R=17$ Ом;$q=10$ Кл;$t=5$ с
+find:$P$ — ?
+sol:$I=\dfrac{q}{t}=2$ А; $U=IR=2\cdot17=34$ В|$P=UI=34\cdot2=68$ Вт
+ans:$P=68$ Вт
+
+@Нагревание и охлаждение
+src:T22
+cond:Масло массой 2 кг нагревают от 20 °C до 120 °C. Удельная теплоёмкость масла 2 кДж/(кг·К). Найти количество теплоты (в кДж).
+given:$m=2$ кг;$T_1=293$ К;$T_2=393$ К;$c=2\cdot10^3$ Дж/(кг·К)
+find:$Q$ — ?
+sol:$Q=c\,m\,(T_2-T_1)=2\cdot10^3\cdot2\cdot(393-293)=4\cdot10^5$ Дж
+ans:$Q=400$ кДж
+
+@Парообразование
+src:OM*
+cond:Какое количество энергии нужно, чтобы превратить в пар воду массой 150 г при температуре 100 °C?
+given:$m=150$ г $=0{,}15$ кг;$L=2{,}3\cdot10^6$ Дж/кг
+find:$Q$ — ?
+sol:Вода уже нагрета до кипения, поэтому нагревать её не нужно: $Q=Lm=2{,}3\cdot10^6\cdot0{,}15=3{,}45\cdot10^5$ Дж
+ans:$Q=345$ кДж
+note:источник — разбор на форуме, ответ перепроверен по формуле
+
+@Уравнение идеального газа
+src:T22
+cond:Найти давление 1 моль идеального газа, занимающего объём 0,4 м³ при температуре 400 К.
+given:$\nu=1$ моль;$V=0{,}4$ м³;$T=400$ К;$R=8{,}31$ Дж/(моль·К)
+find:$p$ — ?
+sol:$pV=\nu RT\ \Rightarrow\ p=\dfrac{\nu RT}{V}=\dfrac{1\cdot8{,}31\cdot400}{0{,}4}=8310$ Па
+ans:$p=8310$ Па
+
+@Закон отражения
+src:T22
+cond:Угол между падающим и отражённым лучами равен 64°. Найти угол падения.
+given:$\gamma=64^\circ$
+find:$\alpha$ — ?
+sol:По закону отражения $\alpha=\beta$, а $\gamma=\alpha+\beta=2\alpha$|$\alpha=\dfrac{\gamma}{2}=\dfrac{64^\circ}{2}=32^\circ$
+ans:$\alpha=32^\circ$
+
+@Закон преломления
+src:T23
+cond:Луч света переходит из воды в стекло. Найти отношение синуса угла падения к синусу угла преломления, если показатель преломления стекла относительно воды равен 1,45.
+given:$n_{21}=1{,}45$
+find:$\dfrac{\sin\alpha}{\sin\beta}$ — ?
+sol:$n_1\sin\alpha=n_2\sin\beta\ \Rightarrow\ \dfrac{\sin\alpha}{\sin\beta}=\dfrac{n_2}{n_1}=n_{21}$
+ans:$\dfrac{\sin\alpha}{\sin\beta}=1{,}45$
+
+@Тонкая линза
+src:B11*
+cond:Тонкая линза с фокусным расстоянием 12 см даёт действительное изображение на расстоянии 20 см от линзы. Найти расстояние от предмета до линзы.
+given:$F=12$ см;$f=20$ см
+find:$d$ — ?
+sol:$\dfrac{1}{d}=\dfrac{1}{F}-\dfrac{1}{f}=\dfrac{1}{12}-\dfrac{1}{20}=\dfrac{1}{30}$
+ans:$d=30$ см
+
+@Увеличение линзы
+src:B11*
+cond:Тонкая линза с фокусным расстоянием 12 см даёт действительное изображение на расстоянии 20 см от линзы. Найти увеличение линзы.
+given:$F=12$ см;$f=20$ см
+find:$\Gamma$ — ?
+sol:Расстояние до предмета из формулы линзы: $d=30$ см|$\Gamma=\dfrac{f}{d}=\dfrac{20}{30}=\dfrac{2}{3}\approx0{,}67$
+ans:$\Gamma\approx0{,}67$ (изображение уменьшенное)
+
+@Фотоэффект
+src:FE*
+cond:Фотокатод облучают светом с длиной волны 300 нм. Красная граница фотоэффекта для вещества катода — 450 нм. Какое запирающее напряжение нужно создать, чтобы фототок прекратился?
+given:$\lambda=300$ нм;$\lambda_{\max}=450$ нм;$h=6{,}63\cdot10^{-34}$ Дж·с;$c=3\cdot10^8$ м/с;$e=1{,}6\cdot10^{-19}$ Кл
+find:$U$ — ?
+sol:$h\nu=A_{\text{вых}}+E_k$, где $A_{\text{вых}}=\dfrac{hc}{\lambda_{\max}}$, $E_k=eU$|$U=\dfrac{hc}{e}\left(\dfrac{1}{\lambda}-\dfrac{1}{\lambda_{\max}}\right)=\dfrac{6{,}63\cdot10^{-34}\cdot3\cdot10^8}{1{,}6\cdot10^{-19}}\left(\dfrac{1}{3\cdot10^{-7}}-\dfrac{1}{4{,}5\cdot10^{-7}}\right)\approx1{,}4$ В
+ans:$U\approx1{,}4$ В
+note:результат согласуется с условием следующей задачи того же сборника (U = 1,4 В)`.split(/\n\s*\n/).forEach(b=>{let o={};b.trim().split('\n').forEach(l=>{if(l[0]==='@')o.t=l.slice(1);else{let i=l.indexOf(':');o[l.slice(0,i)]=l.slice(i+1)}});SOL[o.t]=o});
+const G={cdot:'·',Delta:'Δ',Gamma:'Γ',nu:'ν',lambda:'λ',alpha:'α',beta:'β',rho:'ρ',gamma:'γ',Rightarrow:'⇒',approx:'≈',circ:'°',',':' '};
+const plain=t=>t.replace(/\\text\{([^}]*)\}/g,'$1').replace(/\\d?frac\{((?:[^{}]|\{[^{}]*\})*)\}\{((?:[^{}]|\{[^{}]*\})*)\}/g,'($1)/($2)').replace(/\\([a-zA-Z]+|,)/g,(m,k)=>k in G?G[k]:(k==='left'||k==='right'||k==='displaystyle')?'':k).replace(/\$/g,'').replace(/[{}]/g,'');
+const M=t=>window.noMath?plain(t):t;
+function sol(t){let o=SOL[t];if(!o)return '<div class="nosol">Задача из проверенного источника для этой формулы пока не добавлена.</div>';
+ let k=o.src.replace('*',''),r=SRC[k],calc=o.src.endsWith('*');
+ return `<div class="solution"><div class="s-cond">${M(o.cond)}</div>
+<div class="s-row"><b>Дано:</b><span>${o.given.split(';').map(M).join('<br>')}</span></div>
+<div class="s-row"><b>Найти:</b><span>${M(o.find)}</span></div>
+<div class="s-row"><b>Решение:</b><span>${o.sol.split('|').map(M).join('<br>')}</span></div>
+<div class="s-row"><b>Ответ:</b><span>${M(o.ans)}</span></div>
+<div class="s-src">Источник: <a href="${r[1]}" target="_blank" rel="noopener">${r[0]}</a>${calc?' · условие из источника, решение расписано по формуле':''}${o.note?' · '+o.note:''}</div></div>`}
+function buildTabs(){document.getElementById('topicTabs').innerHTML=Object.keys(lessons).map(k=>`<button class="tool-tab${k===currentLesson?' active':''}" onclick="openTopic('${k}')">${lessons[k].title}</button>`).join('')}
+function openTopic(key){currentLesson=key;document.getElementById('homeContent').classList.add('hidden');let p=document.getElementById('learningPage');p.classList.add('active');document.getElementById('lessonTitle').textContent=lessons[key].title;document.getElementById('lessonLead').textContent=lessons[key].lead;document.getElementById('noteContent').textContent=lessons[key].note;document.getElementById('sideNote').classList.remove('open');document.getElementById('noteArrow').textContent='＋';buildTabs();renderLesson();p.scrollIntoView({behavior:'smooth',block:'start'});}
+function showHome(){document.getElementById('learningPage').classList.remove('active');document.getElementById('homeContent').classList.remove('hidden');document.getElementById('topics').scrollIntoView({behavior:'smooth'});}
+function goTo(id){let L=document.getElementById('learningPage');if(L.classList.contains('active')){L.classList.remove('active');document.getElementById('homeContent').classList.remove('hidden')}
+ requestAnimationFrame(()=>{let el=document.getElementById(id);if(id==='home'||!el)window.scrollTo({top:0,behavior:'smooth'});else el.scrollIntoView({behavior:'smooth',block:'start'})})}
+function toggleNote(){let n=document.getElementById('sideNote');n.classList.toggle('open');document.getElementById('noteArrow').textContent=n.classList.contains('open')?'−':'＋';}
+function renderLesson(){let d=lessons[currentLesson],c=document.getElementById('lessonContent');
+ c.innerHTML=d.items.map((x,i)=>{let t=TEX[x[0]]||x[1];return `<article class="formula-card"><h3>${i+1}. ${x[0]}</h3><div class="formula">${window.noMath?plain(t):'\\[\\displaystyle '+t+'\\]'}</div><div class="formula-note">${x[2]}</div><div class="symbols"><span class="symbol">${x[3]}</span></div>${sol(x[0])}</article>`}).join('');
+ if(window.MathJax&&MathJax.typesetPromise&&!window.noMath)MathJax.typesetPromise([c]).catch(()=>{});}
+document.querySelectorAll('a[href^="#"]:not(.card)').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelectorAll('.navlinks a').forEach(x=>x.classList.toggle('active',x===a));goTo(a.getAttribute('href').slice(1))}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('learningPage').classList.contains('active'))showHome();});
+</script>
+</body></html>
